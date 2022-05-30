@@ -1,0 +1,103 @@
+{
+  "@context": {
+    "devto": "https://dev.to/",
+    "schema": "https://schema.org/",
+    "articles": {
+      "@id": "devto:articles",
+      "@type": "devto:Article"
+    },
+    "image": "schema:image",
+    "url": "schema:url",
+    "datePosted": "schema:datePublished",
+    "name": "schema:name",
+    "description": "schema:description",
+    "author": "devto:Person",
+    "tags": "schema:keywords",
+    "reactions": "schema:ratingValue",
+    "authors": {
+      "@id": "devto:authors",
+      "@type": "devto:Person"
+    },
+    "location": "schema:location",
+    "joinedOn": "schema:dateCreated",
+    "website": "schema:sameAs",
+    "education": "schema:educationalLevel",
+    "work": "schema:affiliation"
+  },
+  "articles": [
+    {
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--6X7bBwx7--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/88i2wd1ggupyor4zjstp.png",
+      "url": "https://dev.to/andrewbaisden/how-to-do-test-driven-development-in-react-using-react-testing-library-jest-and-cypress-1d1i",
+      "datePosted": "2022-05-25",
+      "name": "How to do Test Driven Development in React using React Testing Library, Jest and Cypress",
+      "description": "Test Driven Development or TDD for short is essentially a process that developers and teams go through when they are testing their code. Coding, design and testing are combined together and test cases are created to ensure that the code has been robustly tested and any bugs or errors have been resolved in the development phase prior to it reaching production level.",
+      "author": {"@id": "devto:andrewbaisden"},
+      "tags": [
+        "javascript",
+        "webdev",
+        "beginners",
+        "react"
+      ],
+      "reactions": 32,
+      "@id": "devto:1d1i",
+      "@type": "devto:Article"
+    },
+    {
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--Sr-QUSUn--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1jf8itjh1lracaaola8c.png",
+      "url": "https://dev.to/andrewbaisden/moving-from-javascript-to-typescript-40ac",
+      "datePosted": "2022-02-10",
+      "name": "Moving from JavaScript to TypeScript",
+      "description": "TypeScript is basically a modern way to develop JavaScript projects and the language compiles to raw JavaScript so your codebase can still be read by a browser and other developers who might not know TypeScript. Honestly the syntax is JavaScript so even if you are not familiar with TypeScript you can still understand what is happening.",
+      "author": {"@id": "devto:andrewbaisden"},
+      "tags": [
+        "javascript",
+        "typescript",
+        "beginners",
+        "webdev"
+      ],
+      "reactions": 202,
+      "@id": "devto:40ac",
+      "@type": "devto:Article"
+    },
+    {
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--6bWqWBjY--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rv0t454dtao7ml73xeu9.jpeg",
+      "url": "https://dev.to/ryansolid/when-netlify-asks-you-to-full-time-oss-you-say-yes-5ccf",
+      "datePosted": "2022-05-23",
+      "name": "When Netlify asks you to full-time OSS, you say yes!",
+      "description": "Netlify was one of the first companies to recognize Solid's potential, making financial contributions since last year. It's fair to say that, by hiring me, they plan to continue supporting this work.",
+      "author": {"@id": "devto:ryansolid"},
+      "tags": [
+        "netlify",
+        "opensource",
+        "solidjs"
+      ],
+      "reactions": 199,
+      "@id": "devto:5ccf",
+      "@type": "devto:Article"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Andrew Baisden",
+      "location": "London, UK",
+      "joinedOn": "2020-02-11",
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--TNFVfzhb--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/333889/41951944-ed4b-416b-81b9-241f9be01ff2.png",
+      "website": "https://limey.io/andrewbaisden",
+      "education": "Bachelor Degree Computer Science",
+      "work": "Software Developer @CGI",
+      "@id": "devto:andrewbaisden",
+      "@type": "devto:Person"
+    },
+    {
+      "name": "Ryan Carniato",
+      "location": "San Jose, California",
+      "joinedOn": "2019-06-26",
+      "image": "https://res.cloudinary.com/practicaldev/image/fetch/s--ov8M0F8Q--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/186199/a3d1cfed-a1ca-41cd-a146-9db4e65711d4.jpeg",
+      "website": "https://solidjs.com",
+      "education": "Computer Engineering B.A.Sc, University of British Columbia",
+      "work": "Software Engineer MTS 2, eBay",
+      "@id": "devto:ryansolid",
+      "@type": "devto:Person"
+    }
+  ]
+}
