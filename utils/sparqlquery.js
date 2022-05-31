@@ -43,13 +43,20 @@ function obtainTagsQuery() {
   `
 }
 
-function obtainArticleQuery(filters) {
+function obtainArticleQuery(filters, orderValues) {
   const { search, author, tags } = filters
-  let tagFilter = ''
+  let tagFilter = '', orderBy = '';
   if (tags.length !== 0) {
     tags.forEach((tag) => {
       tagFilter += tagFilter === '' ? tag : `|${tag}`
     })
+  }
+
+  if (orderValues.length !== 0) {
+    // [ { attr: 'datePosted' , mod: 'desc' } ]
+    orderValues.forEach(a => {
+      orderBy += a.mod === 'asc' ? ` ?${a.attr}` : ` DESC(?${a.attr})`;
+    });
   }
   return `
   PREFIX schema: <https://schema.org/>
@@ -83,6 +90,7 @@ function obtainArticleQuery(filters) {
       FILTER (REGEX(?tagFilter, "${tagFilter}", "i"))
     }
   }
+  ORDER BY ${orderValues.length !== 0 ? orderBy : 'DESC(?datePosted)'}
   `
 }
 

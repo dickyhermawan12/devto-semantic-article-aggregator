@@ -12,48 +12,54 @@
             <CInputGroup size="md" w="100%">
               <CInput type="text" placeholder="Reveal the obscurity..." v-model="articleFilters.search" />
               <CInputRightElement width="4.5rem">
-                <CButton h="1.75rem" size="sm" @click="() => (this.articleFilters.search = '')">
-                  X
-                </CButton>
+                <CCloseButton h="1.75rem" size="sm" @click="() => (this.articleFilters.search = '')" />
               </CInputRightElement>
             </CInputGroup>
             <CButton variant-color="green" ml="3" @click="showArticles">Search</CButton>
           </CFlex>
-          <CFlex direction="column">
-            <CButton mb="4" variant-color="green" variant="outline" @click="showCollapse = !showCollapse">
-              Advanced Options
-            </CButton>
-            <CCollapse :is-open="showCollapse">
-              <CFormControl mb="2">
-                <CFormLabel for="author">Author</CFormLabel>
-                <CSelect id="author" placeholder="All author" v-model="articleFilters.author">
-                  <option v-for="author in authors" :key="author.id" :value="author.name">
-                    {{ author.name }}
-                  </option>
-                </CSelect>
-              </CFormControl>
-              <CFormControl mb="3">
-                <CFormLabel for="tag">Tag</CFormLabel>
-                <CSelect id="tag" placeholder="Add a tag" v-model="tagSelected">
+          <CButton mb="4" variant-color="green" variant="outline" @click="showCollapse = !showCollapse">
+            Advanced Options
+          </CButton>
+          <CCollapse :is-open="showCollapse">
+            <CFormControl mb="2">
+              <CFormLabel for="author">Author</CFormLabel>
+              <CSelect id="author" placeholder="All author" v-model="articleFilters.author">
+                <option v-for="author in authors" :key="author.id" :value="author.name">
+                  {{ author.name }}
+                </option>
+              </CSelect>
+            </CFormControl>
+            <CFormControl mb="3">
+              <CFormLabel for="tag">Tag</CFormLabel>
+              <CFlex align="center">
+                <CSelect id="tag" placeholder="Add a tag" v-model="tagSelected" style="flex-grow: 2">
                   <option v-for="tag in tags" :key="tag" :value="tag">
                     {{ tag }}
                   </option>
                 </CSelect>
-              </CFormControl>
-              <CStack :spacing="4" align-items="start" is-inline>
-                <CTag v-for="(tag, index) in articleFilters.tags" :key="tag" variant="solid" :variant-color="themeColors[tags.indexOf(tag) % 8]">
-                  <CTagLabel>{{ tag }}</CTagLabel>
-                  <CTagCloseButton @click.prevent="deleteTagSelection(index)" />
-                </CTag>
-              </CStack>
-            </CCollapse>
-          </CFlex>
-          <CDivider my="4" />
+                <CButton variant-color="green" ml="2" px="40px"
+                  @click="orderDate = orderDate === 'asc' ? 'desc' : 'asc'">Sort by {{ orderDate === 'asc' ? 'Oldest' :
+                      'Newest'
+                  }}</CButton>
+              </CFlex>
+            </CFormControl>
+            <CStack :spacing="4" align-items="start" is-inline>
+              <CTag v-for="(tag, index) in articleFilters.tags" :key="tag" variant="solid"
+                :variant-color="themeColors[tags.indexOf(tag) % 8]">
+                <CTagLabel>{{ tag }}</CTagLabel>
+                <CTagCloseButton @click.prevent="deleteTagSelection(index)" />
+              </CTag>
+            </CStack>
+          </CCollapse>
         </CFlex>
+        <CDivider my="4" />
+      </CFlex>
+      <CFlex justify="center">
         <CGrid maxW="70vw" template-columns="repeat(2, 1fr)" gap="2">
-          <CBox v-for="article in articles" :key="article.id" w="100%" border-width="1px" rounded="lg"
-            overflow="hidden">
-            <CImage v-if="article.image" :src="article.image" :alt="article.name" />
+          <CBox v-for="article in articles" :key="article.id" w="100%" border-width="1px" rounded="lg" overflow="hidden">
+            <CLink :href="article.url" is-external>
+              <CImage v-if="article.image" :src="article.image" :alt="article.name" />
+            </CLink>
             <CBox p="6">
               <CBox d="flex" align-items="baseline">
                 <div v-for="tag in article.tags" :key="tag">
@@ -79,8 +85,7 @@
                             </CText>
                           </CFlex>
                           <CAvatar :name="article.author"
-                            :src="authors.filter(author => author.name === article.author)[0].image"
-                            w="70px" h="70px" />
+                            :src="authors.filter(author => author.name === article.author)[0].image" w="70px" h="70px" />
                         </CFlex>
                         <CDivider />
                         <CText mt="3" fontSize="sm"> Location: {{ authors.filter(author => author.name ===
@@ -107,7 +112,7 @@
                 </CText>
               </CFlex>
               <CBox mb="2" font-weight="semibold" as="h4" line-height="tight" is-truncated>
-                {{ article.name }}
+                <CLink :href="article.url" is-external>{{ article.name }}</CLink>
               </CBox>
               <CBox fontSize="sm">
                 {{ article.description }}
@@ -115,21 +120,21 @@
             </CBox>
           </CBox>
         </CGrid>
-        <CModal :is-open="showModal">
-          <CModalOverlay />
-          <CModalContent>
-            <CModalHeader>Are you sure?</CModalHeader>
-            <CModalBody>Deleting user cannot be undone</CModalBody>
-            <CModalFooter>
-              <CButton @click="showModal = false"> Cancel </CButton>
-              <CButton margin-left="3" variant-color="red" @click="showModal = false">
-                Delete User
-              </CButton>
-            </CModalFooter>
-            <CModalCloseButton @click="showModal = false" />
-          </CModalContent>
-        </CModal>
       </CFlex>
+      <CModal :is-open="showModal">
+        <CModalOverlay />
+        <CModalContent>
+          <CModalHeader>Are you sure?</CModalHeader>
+          <CModalBody>Deleting user cannot be undone</CModalBody>
+          <CModalFooter>
+            <CButton @click="showModal = false"> Cancel </CButton>
+            <CButton margin-left="3" variant-color="red" @click="showModal = false">
+              Delete User
+            </CButton>
+          </CModalFooter>
+          <CModalCloseButton @click="showModal = false" />
+        </CModalContent>
+      </CModal>
     </CBox>
   </CBox>
 </template>
@@ -161,23 +166,32 @@ export default {
       },
       authors: [],
       authorFilters: {
-        search: ""
+        search: ''
       },
       articles: [],
       articleFilters: {
-        search: "",
-        author: "",
+        search: '',
+        author: '',
         tags: [],
       },
+      articleOrderValues: [
+        { attr: 'datePosted', mod: 'desc' }
+      ],
       tags: [],
-      tagSelected: "",
-      themeColors: ["green", "yellow", "blue", "cyan", "orange", "pink" ,"indigo", "red"]
+      tagSelected: '',
+      orderDate: 'desc',
+      themeColors: ['green', 'yellow', 'blue', 'cyan', 'orange', 'pink', 'indigo', 'red']
     }
   },
   watch: {
     tagSelected: function () {
       if (!this.articleFilters.tags.includes(this.tagSelected) && this.tagSelected !== "")
         this.articleFilters.tags.push(this.tagSelected);
+    },
+    orderDate: function () {
+      const orderDateValue = this.articleOrderValues.find(x => x.attr == 'datePosted');
+      if (orderDateValue)
+        orderDateValue.mod = this.orderDate;
     }
   },
   computed: {
@@ -189,7 +203,7 @@ export default {
     },
     toggleColorMode() {
       return this.$toggleColorMode
-    }
+    },
   },
   methods: {
     async showAuthorNames() {
@@ -207,9 +221,8 @@ export default {
       });
     },
     async showArticles() {
-      const query = obtainArticleQuery({
-        ...this.articleFilters
-      });
+      const query = obtainArticleQuery({ ...this.articleFilters }, this.articleOrderValues);
+      console.log(query);
       client.query.select(query).then((bindings) => {
         const arrayHashmapArticles = bindings.reduce((obj, item) => {
           if (obj[item.id.value]) {
@@ -245,7 +258,7 @@ export default {
       return obj;
     }, {});
 
-    tagsBindings.forEach((item, idx) => {
+    tagsBindings.forEach((item) => {
       this.tags.push(item.tags.value);
     });
 
