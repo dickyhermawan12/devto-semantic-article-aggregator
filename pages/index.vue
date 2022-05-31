@@ -35,13 +35,13 @@
               <CFormControl mb="3">
                 <CFormLabel for="tag">Tag</CFormLabel>
                 <CSelect id="tag" placeholder="Add a tag" v-model="tagSelected">
-                  <option v-for="tag in tags" :key="tag.id" :value="tag.name">
-                    {{ tag.name }}
+                  <option v-for="tag in tags" :key="tag" :value="tag">
+                    {{ tag }}
                   </option>
                 </CSelect>
               </CFormControl>
               <CStack :spacing="4" align-items="start" is-inline>
-                <CTag v-for="(tag, index) in articleFilters.tags" :key="tag" variant="solid" variant-color="cyan">
+                <CTag v-for="(tag, index) in articleFilters.tags" :key="tag" variant="solid" :variant-color="themeColors[tags.indexOf(tag) % 8]">
                   <CTagLabel>{{ tag }}</CTagLabel>
                   <CTagCloseButton @click.prevent="deleteTagSelection(index)" />
                 </CTag>
@@ -53,11 +53,11 @@
         <CGrid maxW="70vw" template-columns="repeat(2, 1fr)" gap="2">
           <CBox v-for="article in articles" :key="article.id" w="100%" border-width="1px" rounded="lg"
             overflow="hidden">
-            <CImage :src="article.image" :alt="article.name" />
+            <CImage v-if="article.image" :src="article.image" :alt="article.name" />
             <CBox p="6">
               <CBox d="flex" align-items="baseline">
                 <div v-for="tag in article.tags" :key="tag">
-                  <CBadge rounded="full" px="2" mr="1" variant-color="green">
+                  <CBadge rounded="full" px="2" mr="1" :variant-color="themeColors[tags.indexOf(tag) % 8]">
                     {{ tag }}
                   </CBadge>
                 </div>
@@ -72,11 +72,17 @@
                   <CDarkMode>
                     <CPopoverContent border="0" zIndex="4" width="600px" color="white">
                       <CBox p="5">
-                        <CAvatar :name="article.author"
-                          :src="authors.filter(author => author.name === article.author)[0].image" />
-                        <CText mt="4" fontWeight="bold">
-                          {{ article.author }}
-                        </CText>
+                        <CFlex justify="space-around" align="center" py="2">
+                          <CFlex align="center">
+                            <CText fontWeight="bold">
+                              {{ article.author }}
+                            </CText>
+                          </CFlex>
+                          <CAvatar :name="article.author"
+                            :src="authors.filter(author => author.name === article.author)[0].image"
+                            w="70px" h="70px" />
+                        </CFlex>
+                        <CDivider />
                         <CText mt="3" fontSize="sm"> Location: {{ authors.filter(author => author.name ===
                             article.author)[0].location
                         }} </CText>
@@ -97,7 +103,7 @@
                   </CDarkMode>
                 </CPopover>
                 <CText color="gray.500" font-weight="semibold" letter-spacing="wide" fontSize="sm" my="2">
-                  ♥ {{ article.reactions }}
+                  ♥ {{ article.reactions }} | {{ article.datePosted }}
                 </CText>
               </CFlex>
               <CBox mb="2" font-weight="semibold" as="h4" line-height="tight" is-truncated>
@@ -164,7 +170,8 @@ export default {
         tags: [],
       },
       tags: [],
-      tagSelected: ""
+      tagSelected: "",
+      themeColors: ["green", "yellow", "blue", "cyan", "orange", "pink" ,"indigo", "red"]
     }
   },
   watch: {
@@ -239,7 +246,7 @@ export default {
     }, {});
 
     tagsBindings.forEach((item, idx) => {
-      this.tags.push({ id: idx, name: item.tags.value });
+      this.tags.push(item.tags.value);
     });
 
     this.authors = Object.values(arrayHashmapAuthors);
