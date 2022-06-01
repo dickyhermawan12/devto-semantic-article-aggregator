@@ -3,6 +3,26 @@ const axios = require('axios')
 const fs = require('fs')
 
 const articleURLlist = [
+  'https://dev.to/0xpaulie/accessing-ethereum-archive-nodes-with-infura-op9',
+  'https://dev.to/mahmoudgalal/custom-commands-in-your-linux-or-mac-368m',
+  'https://dev.to/hr21don/setting-up-the-typewriter-effect-without-css-1p1',
+  'https://dev.to/petervanderdoes/human-readable-passwords-17po',
+  'https://dev.to/stephanlamoureux/the-complete-windows-developer-setup-guide-fie',
+  'https://dev.to/juliecherner/7-tips-to-improve-your-typescript-4o5o',
+  'https://dev.to/thawkin3/optimize-your-career-for-growth-93n',
+  'https://dev.to/zellwk/understanding-csrf-attacks-36ao',
+  'https://dev.to/andrewbaisden/the-complete-modern-react-developer-2022-3257',
+  'https://dev.to/andrewbaisden/moving-from-javascript-to-typescript-40ac',
+  'https://dev.to/andrewbaisden/what-is-the-most-important-factor-for-you-when-looking-for-work-3dpp',
+  'https://dev.to/andrewbaisden/8-github-resources-for-becoming-a-developer-in-2022-cji',
+  'https://dev.to/abhirajb/debugging-in-javascript-3de6',
+  'https://dev.to/abhirajb/free-resources-for-developers-meg',
+  'https://dev.to/bespoyasov/clean-architecture-on-frontend-4311',
+  'https://dev.to/saviomartin/20-killer-javascript-one-liners-94f',
+  'https://dev.to/saviomartin/free-certification-courses-for-developers-3378',
+  'https://dev.to/hyggedev/master-frontend-development-by-cloning-these-websites-1m08',
+  'https://dev.to/jamieswift90/the-best-vs-code-extensions-to-supercharge-git-yes-there-s-more-than-gitlens-4588',
+  'https://dev.to/jamieswift90/5-simple-css-tricks-to-improve-your-project-or-just-have-fun-trying-nec',
   'https://dev.to/nnekajenny/how-keyboard-events-work-in-javascript-1g66',
   'https://dev.to/ericnanhu/create-a-modern-application-with-django-and-vue-part-one-11l5',
   'https://dev.to/ericnanhu/create-a-modern-application-with-django-and-vue-part-two-2dh3',
@@ -122,7 +142,7 @@ async function fetchArticleData(articleURL) {
   const description = document.querySelector('#article-body > p')?.textContent
   const image = document
     .querySelector('div.crayons-article__cover > img')
-    .getAttribute('src')
+    ?.getAttribute('src')
   const url = articleURL
   const datePosted = document
     .querySelector('div.pl-3.flex-1 > p > time:nth-child(1)')
@@ -136,7 +156,7 @@ async function fetchArticleData(articleURL) {
     name,
     description,
     author,
-    image,
+    image: image ?? '',
     url,
     datePosted,
     reactions,

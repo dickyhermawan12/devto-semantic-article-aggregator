@@ -3,6 +3,7 @@
 **This directory is used to store scraped articles from [devto-article-scraper](../devto-article-scraper/scraper.js)**
 
 How to actually use the scraper:
+
 1. Navigate to scraper directory from this repo root directory
    ```sh
    cd devto-article-scraper
@@ -14,7 +15,7 @@ How to actually use the scraper:
 3. Update the article URLs to your choice in `scraper.js`
    ```js
    const articleURLlist = [
-    // add article URLs...
+     // add article URLs...
    ]
    ```
 4. Run the script

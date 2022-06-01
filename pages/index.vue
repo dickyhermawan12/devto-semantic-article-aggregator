@@ -117,6 +117,11 @@
                 :src="article.image"
                 :alt="article.name"
               />
+              <CImage
+                v-else
+                :src="require(`~/assets/placeholder.webp`)"
+                :alt="article.name"
+              />
             </CLink>
             <CBox p="6">
               <CBox d="flex" align-items="baseline">
@@ -163,7 +168,7 @@
                             :src="
                               authors.filter(
                                 (author) => author.name === article.author
-                              )[0].image
+                              )[0].image || '-'
                             "
                             w="70px"
                             h="70px"
@@ -175,7 +180,7 @@
                           {{
                             authors.filter(
                               (author) => author.name === article.author
-                            )[0].location
+                            )[0].location || "-"
                           }}
                         </CText>
                         <CText mt="2" fontSize="sm">
@@ -183,23 +188,32 @@
                           {{
                             authors.filter(
                               (author) => author.name === article.author
-                            )[0].joinedOn
+                            )[0].joinedOn || "-"
                           }}
                         </CText>
-                        <CText mt="2" fontSize="sm">
-                          Website:
-                          {{
-                            authors.filter(
-                              (author) => author.name === article.author
-                            )[0].website
-                          }}
-                        </CText>
+			<CText mt="2" fontSize="sm">
+			  Website: 
+                          <CLink v-if="authors.filter(
+                                (author) => author.name === article.author
+                              )[0].website" :href="authors.filter(
+                                (author) => author.name === article.author
+                              )[0].website" is-external fontSize="sm">
+                            {{
+                              authors.filter(
+                                (author) => author.name === article.author
+                              )[0].website
+                            }}
+                          </CLink>
+			  <CText v-else fontSize="sm" as="span">
+                            -
+                          </CText>
+			</CText>
                         <CText mt="2" fontSize="sm">
                           Education:
                           {{
                             authors.filter(
                               (author) => author.name === article.author
-                            )[0].education
+                            )[0].education || "-"
                           }}
                         </CText>
                         <CText mt="2" fontSize="sm">
@@ -207,7 +221,7 @@
                           {{
                             authors.filter(
                               (author) => author.name === article.author
-                            )[0].work
+                            )[0].work || "-"
                           }}
                         </CText>
                       </CBox>
