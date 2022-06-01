@@ -1,6 +1,7 @@
 <div id="top"></div>
 
 <!-- PROJECT SHIELDS -->
+
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -20,8 +21,6 @@
     <a href="https://github.com/dickyhermawan12/devto-semantic-article-aggregator/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -47,9 +46,8 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 <img src="images/screenshot.png" alt="Screenshot" width="700">
@@ -58,23 +56,21 @@ This repository is a final project repo for Semantic Web Class, Teknik Informati
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 ### Built With
 
-* [NuxtJS](https://nuxtjs.org/)
-* [Vue Chakra UI](https://vue.chakra-ui.com/)
+- [NuxtJS](https://nuxtjs.org/)
+- [Vue Chakra UI](https://vue.chakra-ui.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 ### Prerequisites
 
 In order to have this project installed and running, you need to install the following:
+
 - Git
 - Node.js
 - npm
@@ -96,9 +92,8 @@ In order to have this project installed and running, you need to install the fol
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -114,18 +109,16 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Dicky Rahma Hermawan - dickyrahmahermawan@gmail.com
@@ -134,18 +127,16 @@ Project Link: [https://github.com/dickyhermawan12/devto-semantic-article-aggrega
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-* [sparql-http-client](https://github.com/zazuko/sparql-http-client)
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+- [sparql-http-client](https://github.com/zazuko/sparql-http-client)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
+
 [license-shield]: https://img.shields.io/github/license/dickyhermawan12/devto-semantic-article-aggregator.svg?style=for-the-badge
 [license-url]: https://github.com/dickyhermawan12/devto-semantic-article-aggregator/blob/main/LICENSE.txt

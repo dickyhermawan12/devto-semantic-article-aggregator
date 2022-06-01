@@ -46,7 +46,8 @@ function obtainTagsQuery() {
 
 function obtainArticleQuery(filters, orderValues) {
   const { search, author, tags } = filters
-  let tagFilter = '', orderBy = '';
+  let tagFilter = '',
+    orderBy = ''
   if (tags.length !== 0) {
     tags.forEach((tag) => {
       tagFilter += tagFilter === '' ? tag : `|${tag}`
@@ -55,9 +56,9 @@ function obtainArticleQuery(filters, orderValues) {
 
   if (orderValues.length !== 0) {
     // [ { attr: 'datePosted' , mod: 'desc' } ]
-    orderValues.forEach(a => {
-      orderBy += a.mod === 'asc' ? ` ?${a.attr}` : ` DESC(?${a.attr})`;
-    });
+    orderValues.forEach((a) => {
+      orderBy += a.mod === 'asc' ? ` ?${a.attr}` : ` DESC(?${a.attr})`
+    })
   }
   return `
   PREFIX schema: <https://schema.org/>

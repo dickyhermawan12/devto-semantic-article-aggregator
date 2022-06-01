@@ -44,7 +44,7 @@ export default {
        * component auto-import in your Vue templates
        * @type {Boolean}
        **/
-      autoImport: true
-    }
-  }
+      autoImport: true,
+    },
+  },
 }
