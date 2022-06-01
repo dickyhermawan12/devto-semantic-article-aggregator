@@ -43,7 +43,7 @@
                   }}</CButton>
               </CFlex>
             </CFormControl>
-            <CStack :spacing="4" align-items="start" is-inline>
+            <CStack :spacing="4" align-items="start" is-inline style="flex-wrap: wrap; row-gap: 10px">
               <CTag v-for="(tag, index) in articleFilters.tags" :key="tag" variant="solid"
                 :variant-color="themeColors[tags.indexOf(tag) % 8]">
                 <CTagLabel>{{ tag }}</CTagLabel>

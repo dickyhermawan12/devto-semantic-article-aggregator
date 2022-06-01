@@ -105,7 +105,7 @@ async function fetchArticleData(articleURL) {
       authors: authors
     }
 
-    fs.writeFileSync(`../devto-articles-${+ new Date()}.jsonld`, JSON.stringify(dataset));
+    fs.writeFileSync(`../dump/devto-articles-${+ new Date()}.jsonld`, JSON.stringify(dataset));
   } catch (error) {
     throw error;
   }

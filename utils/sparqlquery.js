@@ -1,4 +1,4 @@
-const endpointUrl = 'http://localhost:3030/devto/sparql'
+const endpointUrl = 'http://icvmdev.duckdns.org:3030/devto/sparql'
 
 function obtainAuthorQuery() {
   return `
@@ -40,6 +40,7 @@ function obtainTagsQuery() {
     ?id a devto:Article .
     ?id schema:keywords ?tags .
   }
+  ORDER BY ?tags
   `
 }
 
